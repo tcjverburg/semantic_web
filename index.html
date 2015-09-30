@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 4</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body style='background-image:url("http://hanswisbrun.nl/wp-content/uploads/2015/06/pasta-1.jpg");background-size:cover;'>
+		<div class = 'col-lg-12' style = 'text-align:center;font-size: 5em;'>Pasta Ontology</div>
+		
+		
+		<div class= 'container' style= ' background-color:white;padding-bottom:8.4em;;border-radius:.5em;height:max;'>
+			<div class= 'row'></div>
+			<div class='row'>
+				<div class = 'col-lg-12'>
+				<p>
+				This page lets you query my own ontology I created for the third assignment. 
+				As you have probably inferred, this was a pasta ontology.
+				For purpose of simplicity, I have two queries set ready on this page which you can query against a stardog triple store.
+				</p>
+				<p>
+				However, both query windows on this page are quite different: The first one has inferencing/reasoning turned on whilst 
+				the second window has inferencing/reasoning turned off. The difference this makes is quite evident after pressing the buttons.
+				<p>
+				
+				</div>
+				<div class='col-lg-6'>
+					<h3><big>Ultimate Querying #1</big></h3>
+					<p>Query the Pasta ontology with Inferencing!:</p>
+					<textarea id='query13' class='sparql' style='width: 100%' rows='10'>
+PREFIX food: <http://www.semanticweb.org/gebruiker/ontologies/2015/8/untitled-ontology-8#>
+
+SELECT ?Sauce
+
+WHERE {
+  ?Sauce food:isIngredientOf food:Example-Classic.
+
+}
+</textarea>
+			
+					<div><a id="link13" class='btn btn-primary'style = 'background-color:#C80000;border:#C80000'>With Inferencing</a></div>
+				</div>
+				<div class='col-lg-6'>
+					<h3><big>Output</big></h3>
+					<p>Here are your results:</p>
+					<div id="linktarget13" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-6'>
+					<h3><big>Ultimate Querying #2</big></h3>
+					<p>Query the Pasta ontology without Inferencing!:</p>
+					<textarea id='query14' class='sparql2' style='width: 100%' rows='10'>
+PREFIX food: <http://www.semanticweb.org/gebruiker/ontologies/2015/8/untitled-ontology-8#>
+
+SELECT ?Sauce
+
+WHERE {
+  ?Sauce food:isIngredientOf food:Example-Classic.
+
+}
+</textarea>
+
+					<div><a id="link14" class='btn btn-primary' style = 'background-color:#C80000;border:#C80000;'>Without Inferencing</a></div>
+				</div>
+				<div class='col-lg-6'>
+					<h3><big>Output</big></h3>
+					<p>Here are your results:</p>
+					<div id="linktarget14" class='well' style='height: 15em; scroll: both; overflow: auto;'>This is where the server response will appear.</div>
+				</div>
+			</div>
+		</div>
+		<script src='{{ url_for("static", filename="js/jquery-1.11.0.min.js") }}' type='text/javascript'></script>
+		<script src='{{ url_for("static", filename="js/tutorial.js") }}' type='text/javascript'></script>
+	</body>
+</head>
